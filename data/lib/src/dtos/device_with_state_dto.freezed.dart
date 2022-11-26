@@ -23,7 +23,7 @@ mixin _$DeviceWithStateDto {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DeviceColor get color => throw _privateConstructorUsedError;
-  DeviceType get type => throw _privateConstructorUsedError;
+  OtherDeviceType get type => throw _privateConstructorUsedError;
   DeviceOnOffState get onOffState => throw _privateConstructorUsedError;
   DeviceChargingState get chargingState => throw _privateConstructorUsedError;
   int get batteryLevel => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $DeviceWithStateDtoCopyWith<$Res> {
       {String id,
       String name,
       DeviceColor color,
-      DeviceType type,
+      OtherDeviceType type,
       DeviceOnOffState onOffState,
       DeviceChargingState chargingState,
       int batteryLevel,
@@ -90,7 +90,7 @@ class _$DeviceWithStateDtoCopyWithImpl<$Res, $Val extends DeviceWithStateDto>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as DeviceType,
+              as OtherDeviceType,
       onOffState: null == onOffState
           ? _value.onOffState
           : onOffState // ignore: cast_nullable_to_non_nullable
@@ -123,7 +123,7 @@ abstract class _$$_DeviceWithStateDtoCopyWith<$Res>
       {String id,
       String name,
       DeviceColor color,
-      DeviceType type,
+      OtherDeviceType type,
       DeviceOnOffState onOffState,
       DeviceChargingState chargingState,
       int batteryLevel,
@@ -166,7 +166,7 @@ class __$$_DeviceWithStateDtoCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as DeviceType,
+              as OtherDeviceType,
       onOffState: null == onOffState
           ? _value.onOffState
           : onOffState // ignore: cast_nullable_to_non_nullable
@@ -210,7 +210,7 @@ class _$_DeviceWithStateDto implements _DeviceWithStateDto {
   @override
   final DeviceColor color;
   @override
-  final DeviceType type;
+  final OtherDeviceType type;
   @override
   final DeviceOnOffState onOffState;
   @override
@@ -269,7 +269,7 @@ abstract class _DeviceWithStateDto implements DeviceWithStateDto {
       {required final String id,
       required final String name,
       required final DeviceColor color,
-      required final DeviceType type,
+      required final OtherDeviceType type,
       required final DeviceOnOffState onOffState,
       required final DeviceChargingState chargingState,
       required final int batteryLevel,
@@ -285,7 +285,7 @@ abstract class _DeviceWithStateDto implements DeviceWithStateDto {
   @override
   DeviceColor get color;
   @override
-  DeviceType get type;
+  OtherDeviceType get type;
   @override
   DeviceOnOffState get onOffState;
   @override

@@ -23,7 +23,7 @@ mixin _$DeviceDto {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DeviceColor get color => throw _privateConstructorUsedError;
-  DeviceType get type => throw _privateConstructorUsedError;
+  OtherDeviceType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $DeviceDtoCopyWith<$Res> {
   factory $DeviceDtoCopyWith(DeviceDto value, $Res Function(DeviceDto) then) =
       _$DeviceDtoCopyWithImpl<$Res, DeviceDto>;
   @useResult
-  $Res call({String id, String name, DeviceColor color, DeviceType type});
+  $Res call({String id, String name, DeviceColor color, OtherDeviceType type});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$DeviceDtoCopyWithImpl<$Res, $Val extends DeviceDto>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as DeviceType,
+              as OtherDeviceType,
     ) as $Val);
   }
 }
@@ -85,7 +85,7 @@ abstract class _$$_DeviceDtoCopyWith<$Res> implements $DeviceDtoCopyWith<$Res> {
       __$$_DeviceDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, DeviceColor color, DeviceType type});
+  $Res call({String id, String name, DeviceColor color, OtherDeviceType type});
 }
 
 /// @nodoc
@@ -120,7 +120,7 @@ class __$$_DeviceDtoCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as DeviceType,
+              as OtherDeviceType,
     ));
   }
 }
@@ -144,7 +144,7 @@ class _$_DeviceDto implements _DeviceDto {
   @override
   final DeviceColor color;
   @override
-  final DeviceType type;
+  final OtherDeviceType type;
 
   @override
   String toString() {
@@ -185,7 +185,7 @@ abstract class _DeviceDto implements DeviceDto {
       {required final String id,
       required final String name,
       required final DeviceColor color,
-      required final DeviceType type}) = _$_DeviceDto;
+      required final OtherDeviceType type}) = _$_DeviceDto;
 
   factory _DeviceDto.fromJson(Map<String, dynamic> json) =
       _$_DeviceDto.fromJson;
@@ -197,7 +197,7 @@ abstract class _DeviceDto implements DeviceDto {
   @override
   DeviceColor get color;
   @override
-  DeviceType get type;
+  OtherDeviceType get type;
   @override
   @JsonKey(ignore: true)
   _$$_DeviceDtoCopyWith<_$_DeviceDto> get copyWith =>

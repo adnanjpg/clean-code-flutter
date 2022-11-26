@@ -1,3 +1,5 @@
+import 'package:data/src/data_providers/local_data_provider.dart';
+import 'package:data/src/data_providers/remote_data_provider.dart';
 import 'package:logging/logging.dart';
 
 abstract class BaseService {
@@ -12,5 +14,21 @@ abstract class BaseService {
 
   const BaseService({
     required this.logger,
+  });
+}
+
+abstract class BaseRemoteService extends BaseService {
+  final RemoteDataProvider remoteDataProvider;
+  const BaseRemoteService({
+    required this.remoteDataProvider,
+    required super.logger,
+  });
+}
+
+abstract class BaseLocalService extends BaseService {
+  final LocalDataProvider localDataProvider;
+  const BaseLocalService({
+    required this.localDataProvider,
+    required super.logger,
   });
 }

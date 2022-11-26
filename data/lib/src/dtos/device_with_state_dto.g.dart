@@ -12,7 +12,7 @@ _$_DeviceWithStateDto _$$_DeviceWithStateDtoFromJson(
       id: json['id'] as String,
       name: json['name'] as String,
       color: $enumDecode(_$DeviceColorEnumMap, json['color']),
-      type: $enumDecode(_$DeviceTypeEnumMap, json['type']),
+      type: $enumDecode(_$OtherDeviceTypeEnumMap, json['type']),
       onOffState: $enumDecode(_$DeviceOnOffStateEnumMap, json['on_off_state']),
       chargingState:
           $enumDecode(_$DeviceChargingStateEnumMap, json['charging_state']),
@@ -26,7 +26,7 @@ Map<String, dynamic> _$$_DeviceWithStateDtoToJson(
       'id': instance.id,
       'name': instance.name,
       'color': _$DeviceColorEnumMap[instance.color]!,
-      'type': _$DeviceTypeEnumMap[instance.type]!,
+      'type': _$OtherDeviceTypeEnumMap[instance.type]!,
       'on_off_state': _$DeviceOnOffStateEnumMap[instance.onOffState]!,
       'charging_state': _$DeviceChargingStateEnumMap[instance.chargingState]!,
       'battery_level': instance.batteryLevel,
@@ -40,11 +40,11 @@ const _$DeviceColorEnumMap = {
   DeviceColor.yellow: 'yellow',
 };
 
-const _$DeviceTypeEnumMap = {
-  DeviceType.vaccum: 'vaccum',
-  DeviceType.lamp: 'lamp',
-  DeviceType.tv: 'tv',
-  DeviceType.fridge: 'fridge',
+const _$OtherDeviceTypeEnumMap = {
+  OtherDeviceType.vaccum: 'vaccum',
+  OtherDeviceType.lamp: 'lamp',
+  OtherDeviceType.tv: 'tv',
+  OtherDeviceType.fridge: 'fridge',
 };
 
 const _$DeviceOnOffStateEnumMap = {

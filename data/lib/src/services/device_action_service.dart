@@ -7,11 +7,12 @@ import 'package:logging/logging.dart';
 
 export '../dtos/device_with_state_dto.dart';
 
-class DeviceActionService extends BaseService {
+class DeviceActionService extends BaseRemoteService {
   final String languageCode;
   const DeviceActionService({
     required this.languageCode,
     required super.logger,
+    required super.remoteDataProvider,
   });
 
   String get _actionsFilePath => getCorrectPath('device_actions.json');

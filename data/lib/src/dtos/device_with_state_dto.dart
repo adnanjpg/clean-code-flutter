@@ -1,5 +1,5 @@
 import 'package:data/src/enums/device_color.dart';
-import 'package:data/src/enums/device_type.dart';
+import 'package:data/src/enums/other_device_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../enums/device_charging_state.dart';
@@ -14,7 +14,7 @@ class DeviceWithStateDto with _$DeviceWithStateDto {
     required String id,
     required String name,
     required DeviceColor color,
-    required DeviceType type,
+    required OtherDeviceType type,
     required DeviceOnOffState onOffState,
     required DeviceChargingState chargingState,
     required int batteryLevel,

@@ -9,11 +9,12 @@ import '../dtos/device_state_dto.dart';
 import '../dtos/device_with_state_dto.dart';
 export '../dtos/device_with_state_dto.dart';
 
-class DeviceWithStateService extends BaseService {
+class DeviceWithStateService extends BaseRemoteService {
   final String languageCode;
   const DeviceWithStateService({
     required this.languageCode,
     required super.logger,
+    required super.remoteDataProvider,
   });
 
   String get _devicesFilePath => getCorrectPath('devices.json');

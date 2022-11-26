@@ -1,38 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'device_action_dto.dart';
+part of 'routine_dto.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class DeviceActionDtoAdapter extends TypeAdapter<DeviceActionDto> {
+class RoutineDtoAdapter extends TypeAdapter<RoutineDto> {
   @override
-  final int typeId = 1;
+  final int typeId = 0;
 
   @override
-  DeviceActionDto read(BinaryReader reader) {
+  RoutineDto read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return DeviceActionDto(
+    return RoutineDto(
       id: fields[0] as String,
-      deviceType: fields[1] as OtherDeviceType,
-      actionName: fields[2] as String,
+      name: fields[1] as String,
+      actions: (fields[2] as List).cast<DeviceActionDto>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, DeviceActionDto obj) {
+  void write(BinaryWriter writer, RoutineDto obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.deviceType)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.actionName);
+      ..write(obj.actions);
   }
 
   @override
@@ -41,7 +41,7 @@ class DeviceActionDtoAdapter extends TypeAdapter<DeviceActionDto> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is DeviceActionDtoAdapter &&
+      other is RoutineDtoAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -50,23 +50,18 @@ class DeviceActionDtoAdapter extends TypeAdapter<DeviceActionDto> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DeviceActionDto _$$_DeviceActionDtoFromJson(Map<String, dynamic> json) =>
-    _$_DeviceActionDto(
+_$_RoutineDto _$$_RoutineDtoFromJson(Map<String, dynamic> json) =>
+    _$_RoutineDto(
       id: json['id'] as String,
-      deviceType: $enumDecode(_$OtherDeviceTypeEnumMap, json['device_type']),
-      actionName: json['action_name'] as String,
+      name: json['name'] as String,
+      actions: (json['actions'] as List<dynamic>)
+          .map((e) => DeviceActionDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$$_DeviceActionDtoToJson(_$_DeviceActionDto instance) =>
+Map<String, dynamic> _$$_RoutineDtoToJson(_$_RoutineDto instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'device_type': _$OtherDeviceTypeEnumMap[instance.deviceType]!,
-      'action_name': instance.actionName,
+      'name': instance.name,
+      'actions': instance.actions,
     };
-
-const _$OtherDeviceTypeEnumMap = {
-  OtherDeviceType.vaccum: 'vaccum',
-  OtherDeviceType.lamp: 'lamp',
-  OtherDeviceType.tv: 'tv',
-  OtherDeviceType.fridge: 'fridge',
-};

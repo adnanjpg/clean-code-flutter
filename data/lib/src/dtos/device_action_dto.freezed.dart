@@ -20,8 +20,11 @@ DeviceActionDto _$DeviceActionDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DeviceActionDto {
+  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
-  String get deviceType => throw _privateConstructorUsedError;
+  @HiveField(1)
+  OtherDeviceType get deviceType => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get actionName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +39,10 @@ abstract class $DeviceActionDtoCopyWith<$Res> {
           DeviceActionDto value, $Res Function(DeviceActionDto) then) =
       _$DeviceActionDtoCopyWithImpl<$Res, DeviceActionDto>;
   @useResult
-  $Res call({String id, String deviceType, String actionName});
+  $Res call(
+      {@HiveField(0) String id,
+      @HiveField(1) OtherDeviceType deviceType,
+      @HiveField(2) String actionName});
 }
 
 /// @nodoc
@@ -64,7 +70,7 @@ class _$DeviceActionDtoCopyWithImpl<$Res, $Val extends DeviceActionDto>
       deviceType: null == deviceType
           ? _value.deviceType
           : deviceType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OtherDeviceType,
       actionName: null == actionName
           ? _value.actionName
           : actionName // ignore: cast_nullable_to_non_nullable
@@ -81,7 +87,10 @@ abstract class _$$_DeviceActionDtoCopyWith<$Res>
       __$$_DeviceActionDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String deviceType, String actionName});
+  $Res call(
+      {@HiveField(0) String id,
+      @HiveField(1) OtherDeviceType deviceType,
+      @HiveField(2) String actionName});
 }
 
 /// @nodoc
@@ -107,7 +116,7 @@ class __$$_DeviceActionDtoCopyWithImpl<$Res>
       deviceType: null == deviceType
           ? _value.deviceType
           : deviceType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OtherDeviceType,
       actionName: null == actionName
           ? _value.actionName
           : actionName // ignore: cast_nullable_to_non_nullable
@@ -118,18 +127,24 @@ class __$$_DeviceActionDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeviceActionDto implements _DeviceActionDto {
-  const _$_DeviceActionDto(
-      {required this.id, required this.deviceType, required this.actionName});
+class _$_DeviceActionDto extends _DeviceActionDto {
+  _$_DeviceActionDto(
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.deviceType,
+      @HiveField(2) required this.actionName})
+      : super._();
 
   factory _$_DeviceActionDto.fromJson(Map<String, dynamic> json) =>
       _$$_DeviceActionDtoFromJson(json);
 
   @override
+  @HiveField(0)
   final String id;
   @override
-  final String deviceType;
+  @HiveField(1)
+  final OtherDeviceType deviceType;
   @override
+  @HiveField(2)
   final String actionName;
 
   @override
@@ -167,20 +182,24 @@ class _$_DeviceActionDto implements _DeviceActionDto {
   }
 }
 
-abstract class _DeviceActionDto implements DeviceActionDto {
-  const factory _DeviceActionDto(
-      {required final String id,
-      required final String deviceType,
-      required final String actionName}) = _$_DeviceActionDto;
+abstract class _DeviceActionDto extends DeviceActionDto {
+  factory _DeviceActionDto(
+      {@HiveField(0) required final String id,
+      @HiveField(1) required final OtherDeviceType deviceType,
+      @HiveField(2) required final String actionName}) = _$_DeviceActionDto;
+  _DeviceActionDto._() : super._();
 
   factory _DeviceActionDto.fromJson(Map<String, dynamic> json) =
       _$_DeviceActionDto.fromJson;
 
   @override
+  @HiveField(0)
   String get id;
   @override
-  String get deviceType;
+  @HiveField(1)
+  OtherDeviceType get deviceType;
   @override
+  @HiveField(2)
   String get actionName;
   @override
   @JsonKey(ignore: true)
