@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'global_widgets/loading_screen.dart';
-import 'screens/home.dart';
 import 'utils/app_init.dart';
+import 'utils/route_table.dart';
 import 'utils/utils.dart';
 
 class TheApp extends StatelessWidget {
@@ -49,18 +49,22 @@ class _App extends ConsumerWidget {
       );
     }
 
+    final router = ref.watch(RouteTable.routerProvider);
+
     return _LocalizationWrapper(
       child: Builder(
         builder: (context) {
-          return MaterialApp(
+          return MaterialApp.router(
             debugShowMaterialGrid: false,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: appLangs[0].toLocale(),
             debugShowCheckedModeBanner: false,
+            routeInformationProvider: router.routeInformationProvider,
+            routeInformationParser: router.routeInformationParser,
+            routerDelegate: router.routerDelegate,
             scaffoldMessengerKey:
                 ref.watch(appStateKeysProv).scaffoldMessengerKey,
-            home: const HomeScreen(),
           );
         },
       ),
