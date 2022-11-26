@@ -15,4 +15,4 @@ clean() {
 
 clean data/
 clean domain/
-clean feature/
+clean presentation/

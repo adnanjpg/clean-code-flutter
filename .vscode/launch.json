@@ -5,21 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "feature",
-            "cwd": "feature",
+            "name": "presentation",
+            "cwd": "presentation",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "feature (profile mode)",
-            "cwd": "feature",
+            "name": "presentation (profile mode)",
+            "cwd": "presentation",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "feature (release mode)",
-            "cwd": "feature",
+            "name": "presentation (release mode)",
+            "cwd": "presentation",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
