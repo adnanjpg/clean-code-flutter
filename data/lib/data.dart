@@ -1,3 +1,4 @@
 library data;
 
-// export 'src/data_base.dart';
+export 'src/services/device_service.dart';
+export 'src/services/device_state_service.dart';

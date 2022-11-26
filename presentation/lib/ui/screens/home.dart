@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../utils/utils.dart';
+import 'package:presentation/ui/widgets/devices_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,7 +8,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Text(getStr('hi')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            DevicesList(),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,11 +1,16 @@
+import 'package:data/src/services/base_service.dart';
 import 'package:data/src/services/device_state_service.dart';
 import 'package:data/src/services/device_service.dart';
+import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 import 'package:test/test.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  BaseService.setForTesting();
   final languageCode = 'en-US';
   final logger = Logger('data');
+
   group(
     'Devices service',
     () {

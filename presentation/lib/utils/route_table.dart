@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../global_widgets/error_screen.dart';
-import '../screens/home.dart';
+import '../ui/screens/home.dart';
 
 typedef GoRouterWidgetBuilder = Widget Function(
   BuildContext context,

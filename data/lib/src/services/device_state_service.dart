@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:data/src/services/base_service.dart';
+import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 
 import '../dtos/device_state_dto.dart';
+export '../dtos/device_state_dto.dart';
 
 class DeviceStateService extends BaseService {
   const DeviceStateService({
@@ -13,7 +14,9 @@ class DeviceStateService extends BaseService {
 
   Future<List<DeviceStateDto>?> _getDeviceStates() async {
     try {
-      var input = await File('demo_data/device_states.json').readAsString();
+      var input = await rootBundle.loadString(
+        getCorrectPath('device_states.json'),
+      );
       var data = jsonDecode(input) as List?;
 
       if (data == null) return null;

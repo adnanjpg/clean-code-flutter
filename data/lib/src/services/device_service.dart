@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:data/src/services/base_service.dart';
+import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 
 import '../dtos/device_dto.dart';
+export '../dtos/device_dto.dart';
 
 class DeviceService extends BaseService {
   final String languageCode;
@@ -15,7 +16,9 @@ class DeviceService extends BaseService {
 
   Future<List<DeviceDto>?> getDevices() async {
     try {
-      var input = await File('demo_data/devices.json').readAsString();
+      var input = await rootBundle.loadString(
+        getCorrectPath('devices.json'),
+      );
       var map = jsonDecode(input) as Map?;
 
       if (map == null) return null;
