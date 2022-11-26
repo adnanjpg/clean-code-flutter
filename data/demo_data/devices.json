@@ -1,0 +1,54 @@
+{
+    "en-US": [
+        {
+            "id": "1",
+            "color": "red",
+            "type": "vaccum",
+            "name": "Smart vaccum"
+        },
+        {
+            "id": "2",
+            "color": "blue",
+            "type": "lamp",
+            "name": "Smart lamp"
+        },
+        {
+            "id": "3",
+            "color": "green",
+            "type": "tv",
+            "name": "Smart TV"
+        },
+        {
+            "id": "4",
+            "color": "yellow",
+            "type": "fridge",
+            "name": "Smart fridge"
+        }
+    ],
+    "tr-TR": [
+        {
+            "id": "1",
+            "color": "red",
+            "type": "vaccum",
+            "name": "Akıllı süpürge"
+        },
+        {
+            "id": "2",
+            "color": "blue",
+            "type": "lamp",
+            "name": "Akıllı lamba"
+        },
+        {
+            "id": "3",
+            "color": "green",
+            "type": "tv",
+            "name": "Akıllı televizyon"
+        },
+        {
+            "id": "4",
+            "color": "yellow",
+            "type": "fridge",
+            "name": "Akıllı buzdolabı"
+        }
+    ]
+}

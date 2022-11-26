@@ -1,0 +1,30 @@
+[
+    {
+        "device_id": "1",
+        "on_off_state": 1,
+        "charging_state": 1,
+        "battery_level": 100,
+        "wifi_signal": 100
+    },
+    {
+        "device_id": "2",
+        "on_off_state": 1,
+        "charging_state": 0,
+        "battery_level": 60,
+        "wifi_signal": 80
+    },
+    {
+        "device_id": "3",
+        "on_off_state": 0,
+        "charging_state": 1,
+        "battery_level": 40,
+        "wifi_signal": 0
+    },
+    {
+        "device_id": "4",
+        "on_off_state": 0,
+        "charging_state": 0,
+        "battery_level": 20,
+        "wifi_signal": 30
+    }
+]

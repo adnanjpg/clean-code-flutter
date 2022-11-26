@@ -1,13 +1,44 @@
+import 'package:data/src/services/device_state_service.dart';
+import 'package:data/src/services/device_service.dart';
+import 'package:logging/logging.dart';
+import 'package:test/test.dart';
+
 void main() {
-  // group('A group of tests', () {
-  //   final awesome = Awesome();
+  final languageCode = 'en-US';
+  final logger = Logger('data');
+  group(
+    'Devices service',
+    () {
+      final deviceService = DeviceService(
+        languageCode: languageCode,
+        logger: logger,
+      );
 
-  //   setUp(() {
-  //     // Additional setup goes here.
-  //   });
+      test(
+        'Get devces list',
+        () async {
+          final devices = await deviceService.getDevices();
 
-  //   test('First Test', () {
-  //     expect(awesome.isAwesome, isTrue);
-  //   });
-  // });
+          expect(devices, isNotNull);
+        },
+      );
+    },
+  );
+  group(
+    'Device states service',
+    () {
+      final deviceStateService = DeviceStateService(
+        logger: logger,
+      );
+
+      test(
+        'Get device states list',
+        () async {
+          final deviceStates = await deviceStateService.getDeviceState('1');
+
+          expect(deviceStates, isNotNull);
+        },
+      );
+    },
+  );
 }
