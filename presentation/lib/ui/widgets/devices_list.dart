@@ -34,7 +34,7 @@ class _DevicesListBody extends StatelessWidget {
           style: Theme.of(context).textTheme.headline3,
         ),
         Container(
-          height: 100,
+          height: 130,
           margin: defPaddingVertical,
           child: BlocBuilder<DevicesListBlocCubit, DevicesListBlocState>(
             builder: (context, state) {
@@ -53,10 +53,24 @@ class _DevicesListBody extends StatelessWidget {
                         color: device.bgColor,
                         child: ListTile(
                           title: Text(device.name),
-                          subtitle: Row(
+                          subtitle: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(device.batteryIcon),
-                              Icon(device.wifiIcon),
+                              Row(
+                                children: [
+                                  Icon(device.batteryIcon),
+                                  Icon(device.wifiIcon),
+                                ],
+                              ),
+                              Switch.adaptive(
+                                value: device.onOffState.isOn,
+                                onChanged: (_) {
+                                  context
+                                      .read<DevicesListBlocCubit>()
+                                      .toggleDeviceEnabled(device.id);
+                                },
+                              ),
                             ],
                           ),
                         ),

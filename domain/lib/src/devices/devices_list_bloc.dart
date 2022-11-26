@@ -1,8 +1,10 @@
+import 'package:domain/src/prov/logger_prov.dart';
 import 'package:domain/src/prov/services_prov.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:data/data.dart';
+import 'package:logging/logging.dart';
 
 import '../ref_cubit.dart';
 
@@ -35,6 +37,33 @@ class DevicesListBlocCubit extends RefCubit<DevicesListBlocState> {
       }
 
       emit(DevicesListBlocState.loaded(devices));
+    } catch (e) {
+      emit(DevicesListBlocState.error(e.toString()));
+    }
+  }
+
+  void toggleDeviceEnabled(String deviceId) async {
+    if (state is! _Loaded) {
+      ref
+          .read(domainLoggerProv)
+          .log(Level.SHOUT, 'Tried to toggle device enabled when not loaded');
+      return;
+    }
+
+    final oldDevs = (state as _Loaded).devices;
+    emit(const DevicesListBlocState.loading());
+    try {
+      final devs = oldDevs.map(
+        (e) {
+          if (e.id == deviceId) {
+            return e.copyWith(onOffState: e.onOffState.inverse);
+          } else {
+            return e;
+          }
+        },
+      ).toList();
+
+      emit(DevicesListBlocState.loaded(devs));
     } catch (e) {
       emit(DevicesListBlocState.error(e.toString()));
     }
@@ -89,6 +118,15 @@ extension DevColor on DeviceColor {
 extension OnOff on DeviceOnOffState {
   bool get isOn => this == DeviceOnOffState.on;
   bool get isOff => this == DeviceOnOffState.off;
+
+  DeviceOnOffState get inverse {
+    switch (this) {
+      case DeviceOnOffState.on:
+        return DeviceOnOffState.off;
+      case DeviceOnOffState.off:
+        return DeviceOnOffState.on;
+    }
+  }
 }
 
 extension Charge on DeviceChargingState {
