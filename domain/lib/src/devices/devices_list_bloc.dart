@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:data/data.dart';
-import 'package:logging/logging.dart';
 
 import '../ref_cubit.dart';
 

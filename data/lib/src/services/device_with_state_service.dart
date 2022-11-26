@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:data/src/services/base_service.dart';
 import 'package:flutter/services.dart';
@@ -17,12 +16,12 @@ class DeviceWithStateService extends BaseService {
     required super.logger,
   });
 
-  String get devicesFilePath => getCorrectPath('devices.json');
-  String get deviceStatesFilePath => getCorrectPath('device_states.json');
+  String get _devicesFilePath => getCorrectPath('devices.json');
+  String get _deviceStatesFilePath => getCorrectPath('device_states.json');
 
   Future<List<DeviceStateDto>?> _getDeviceStates() async {
     try {
-      var input = await rootBundle.loadString(deviceStatesFilePath);
+      var input = await rootBundle.loadString(_deviceStatesFilePath);
       var data = jsonDecode(input) as List?;
 
       if (data == null) return null;
@@ -43,7 +42,7 @@ class DeviceWithStateService extends BaseService {
 
   Future<List<DeviceDto>?> _getDevices() async {
     try {
-      var input = await rootBundle.loadString(devicesFilePath);
+      var input = await rootBundle.loadString(_devicesFilePath);
       var map = jsonDecode(input) as Map?;
 
       if (map == null) return null;

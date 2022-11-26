@@ -1,0 +1,92 @@
+[
+    {
+        "id": "1",
+        "device_type": "vaccum",
+        "action_name": "Start"
+    },
+    {
+        "id": "2",
+        "device_type": "vaccum",
+        "action_name": "Stop"
+    },
+    {
+        "id": "3",
+        "device_type": "vaccum",
+        "action_name": "Pause"
+    },
+    {
+        "id": "4",
+        "device_type": "vaccum",
+        "action_name": "Resume"
+    },
+    {
+        "id": "7",
+        "device_type": "vaccum",
+        "action_name": "Return"
+    },
+    {
+        "id": "8",
+        "device_type": "lamp",
+        "action_name": "RGB"
+    },
+    {
+        "id": "9",
+        "device_type": "lamp",
+        "action_name": "White"
+    },
+    {
+        "id": "10",
+        "device_type": "lamp",
+        "action_name": "Candle"
+    },
+    {
+        "id": "11",
+        "device_type": "lamp",
+        "action_name": "Fireplace"
+    },
+    {
+        "id": "12",
+        "device_type": "tv",
+        "action_name": "Power"
+    },
+    {
+        "id": "13",
+        "device_type": "tv",
+        "action_name": "Volume Up"
+    },
+    {
+        "id": "14",
+        "device_type": "tv",
+        "action_name": "Volume Down"
+    },
+    {
+        "id": "15",
+        "device_type": "tv",
+        "action_name": "Channel Up"
+    },
+    {
+        "id": "16",
+        "device_type": "fridge",
+        "action_name": "Power"
+    },
+    {
+        "id": "17",
+        "device_type": "fridge",
+        "action_name": "Temperature Up"
+    },
+    {
+        "id": "18",
+        "device_type": "fridge",
+        "action_name": "Temperature Down"
+    },
+    {
+        "id": "19",
+        "device_type": "fridge",
+        "action_name": "Freezer Temperature Up"
+    },
+    {
+        "id": "20",
+        "device_type": "fridge",
+        "action_name": "Freezer Temperature Down"
+    }
+]

@@ -28,4 +28,22 @@ void main() {
       );
     },
   );
+  group(
+    'Device actions service',
+    () {
+      final deviceService = DeviceActionService(
+        languageCode: languageCode,
+        logger: logger,
+      );
+
+      test(
+        'Get device actions list',
+        () async {
+          final devicesWState = await deviceService.getDeviceActions();
+
+          expect(devicesWState, isNotNull);
+        },
+      );
+    },
+  );
 }

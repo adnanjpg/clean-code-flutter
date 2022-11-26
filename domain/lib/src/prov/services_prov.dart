@@ -10,3 +10,10 @@ final deviceWithStateServiceProv = Provider(
     logger: ref.watch(dataLoggerProv),
   ),
 );
+
+final deviceActionsProv = Provider(
+  (ref) => DeviceActionService(
+    languageCode: ref.watch(currentLangProv),
+    logger: ref.watch(dataLoggerProv),
+  ),
+);
