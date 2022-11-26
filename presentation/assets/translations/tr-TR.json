@@ -5,5 +5,10 @@
     "home:devices_list": "Cihazlar",
     "home:routines_list": "Rutinler",
     "home:no_routines": "Henüz rutin yok",
-    "home:add_routine": "Rutin ekle"
+    "home:add_routine": "Rutin ekle",
+    "home:routine_form:form_title": "Rutin oluştur",
+    "home:routine_form:routine_name": "Rutin adı",
+    "home:routine_form:invalid_name": "Lütfen geçerli bir rutin adı girin",
+    "home:routine_form:select_actions": "Eylemleri seç",
+    "home:routine_form:submit": "Oluştur"
 }

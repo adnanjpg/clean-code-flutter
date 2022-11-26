@@ -2,10 +2,12 @@ import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:presentation/global_widgets/error_widget.dart';
 
 import '../../global_widgets/loading_widget.dart';
 import '../../utils/utils.dart';
+import 'create_routine_form.dart';
 
 final _routinesListBlocProv = Provider.autoDispose(RoutinesListBlocCubit.new);
 
@@ -38,7 +40,7 @@ class _RoutinesListBody extends ConsumerWidget {
             ),
             IconButton(
               icon: const Icon(Icons.add),
-              onPressed: () {},
+              onPressed: () async => await CreateRoutineForm.showModal(context),
             ),
           ],
         ),
@@ -60,7 +62,8 @@ class _RoutinesListBody extends ConsumerWidget {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async =>
+                            await CreateRoutineForm.showModal(context),
                         child: Text(
                           getStr('home:add_routine'),
                         ),
@@ -68,10 +71,22 @@ class _RoutinesListBody extends ConsumerWidget {
                     ],
                   );
                 }
+
                 return Column(
                   children: routines.map(
                     (e) {
-                      return Text(e.name);
+                      return Card(
+                        child: ListTile(
+                          title: Text(
+                            e.name,
+                          ),
+                          subtitle: Text(
+                            e.actionsStr,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      );
                     },
                   ).toList(),
                 );

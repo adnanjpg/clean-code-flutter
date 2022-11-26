@@ -1,6 +1,4 @@
 import 'package:data/data.dart';
-import 'package:data/src/dtos/device_action_dto.dart';
-import 'package:data/src/dtos/routine_dto.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:logging/logging.dart';

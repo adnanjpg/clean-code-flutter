@@ -5,7 +5,7 @@ import 'package:data/src/services/base_service.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 
-export '../dtos/device_with_state_dto.dart';
+export '../dtos/device_action_dto.dart';
 
 class DeviceActionService extends BaseRemoteService {
   final String languageCode;

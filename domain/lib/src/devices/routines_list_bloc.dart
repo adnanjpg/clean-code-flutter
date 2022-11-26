@@ -1,4 +1,5 @@
 import 'package:data/data.dart';
+import 'package:domain/src/prov/logger_prov.dart';
 import 'package:domain/src/prov/services_prov.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -29,5 +30,29 @@ class RoutinesListBlocCubit extends RefCubit<RoutinesListBlocState> {
     } catch (e) {
       emit(RoutinesListBlocState.error(e.toString()));
     }
+  }
+
+  bool addRoutine(RoutineDto routine) {
+    if (state is! _Loaded) {
+      ref
+          .read(domainLoggerProv)
+          .shout('Tried to toggle device enabled when not loaded');
+      return false;
+    }
+
+    final routines = (state as _Loaded).routines;
+    final newRoutines = [...routines, routine];
+    emit(RoutinesListBlocState.loaded(newRoutines));
+    return true;
+  }
+}
+
+extension RoutineEntity on RoutineDto {
+  String get actionsStr {
+    return actions
+        .map(
+          (e) => e.actionName,
+        )
+        .join(', ');
   }
 }

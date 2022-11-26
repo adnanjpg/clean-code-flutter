@@ -5,5 +5,10 @@
     "home:devices_list": "Devices",
     "home:routines_list": "Routines",
     "home:no_routines": "No routines",
-    "home:add_routine": "Add routine"
+    "home:add_routine": "Add routine",
+    "home:routine_form:form_title": "Create routine",
+    "home:routine_form:routine_name": "Routine name",
+    "home:routine_form:invalid_name": "Invalid name",
+    "home:routine_form:select_actions": "Select actions",
+    "home:routine_form:submit": "Create"
 }
