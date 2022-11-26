@@ -20,7 +20,7 @@ mixin _$DevicesListBlocState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DeviceDto> devices) loaded,
+    required TResult Function(List<DeviceWithStateDto> devices) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$DevicesListBlocState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DeviceDto> devices)? loaded,
+    TResult? Function(List<DeviceWithStateDto> devices)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$DevicesListBlocState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DeviceDto> devices)? loaded,
+    TResult Function(List<DeviceWithStateDto> devices)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DeviceDto> devices) loaded,
+    required TResult Function(List<DeviceWithStateDto> devices) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DeviceDto> devices)? loaded,
+    TResult? Function(List<DeviceWithStateDto> devices)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DeviceDto> devices)? loaded,
+    TResult Function(List<DeviceWithStateDto> devices)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -239,7 +239,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DeviceDto> devices) loaded,
+    required TResult Function(List<DeviceWithStateDto> devices) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -250,7 +250,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DeviceDto> devices)? loaded,
+    TResult? Function(List<DeviceWithStateDto> devices)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -261,7 +261,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DeviceDto> devices)? loaded,
+    TResult Function(List<DeviceWithStateDto> devices)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -318,7 +318,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<DeviceDto> devices});
+  $Res call({List<DeviceWithStateDto> devices});
 }
 
 /// @nodoc
@@ -337,7 +337,7 @@ class __$$_LoadedCopyWithImpl<$Res>
       null == devices
           ? _value._devices
           : devices // ignore: cast_nullable_to_non_nullable
-              as List<DeviceDto>,
+              as List<DeviceWithStateDto>,
     ));
   }
 }
@@ -345,11 +345,11 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<DeviceDto> devices) : _devices = devices;
+  const _$_Loaded(final List<DeviceWithStateDto> devices) : _devices = devices;
 
-  final List<DeviceDto> _devices;
+  final List<DeviceWithStateDto> _devices;
   @override
-  List<DeviceDto> get devices {
+  List<DeviceWithStateDto> get devices {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_devices);
   }
@@ -382,7 +382,7 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DeviceDto> devices) loaded,
+    required TResult Function(List<DeviceWithStateDto> devices) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(devices);
@@ -393,7 +393,7 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DeviceDto> devices)? loaded,
+    TResult? Function(List<DeviceWithStateDto> devices)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(devices);
@@ -404,7 +404,7 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DeviceDto> devices)? loaded,
+    TResult Function(List<DeviceWithStateDto> devices)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -453,9 +453,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements DevicesListBlocState {
-  const factory _Loaded(final List<DeviceDto> devices) = _$_Loaded;
+  const factory _Loaded(final List<DeviceWithStateDto> devices) = _$_Loaded;
 
-  List<DeviceDto> get devices;
+  List<DeviceWithStateDto> get devices;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -525,7 +525,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DeviceDto> devices) loaded,
+    required TResult Function(List<DeviceWithStateDto> devices) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -536,7 +536,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DeviceDto> devices)? loaded,
+    TResult? Function(List<DeviceWithStateDto> devices)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -547,7 +547,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DeviceDto> devices)? loaded,
+    TResult Function(List<DeviceWithStateDto> devices)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

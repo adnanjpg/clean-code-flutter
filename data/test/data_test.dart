@@ -1,6 +1,5 @@
+import 'package:data/data.dart';
 import 'package:data/src/services/base_service.dart';
-import 'package:data/src/services/device_state_service.dart';
-import 'package:data/src/services/device_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 import 'package:test/test.dart';
@@ -14,34 +13,17 @@ void main() {
   group(
     'Devices service',
     () {
-      final deviceService = DeviceService(
+      final deviceService = DeviceWithStateService(
         languageCode: languageCode,
         logger: logger,
       );
 
       test(
-        'Get devces list',
+        'Get devices with states list',
         () async {
-          final devices = await deviceService.getDevices();
+          final devicesWState = await deviceService.getDevicesWithState();
 
-          expect(devices, isNotNull);
-        },
-      );
-    },
-  );
-  group(
-    'Device states service',
-    () {
-      final deviceStateService = DeviceStateService(
-        logger: logger,
-      );
-
-      test(
-        'Get device states list',
-        () async {
-          final deviceStates = await deviceStateService.getDeviceState('1');
-
-          expect(deviceStates, isNotNull);
+          expect(devicesWState, isNotNull);
         },
       );
     },

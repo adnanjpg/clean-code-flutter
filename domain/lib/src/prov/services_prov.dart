@@ -4,15 +4,9 @@ import 'package:riverpod/riverpod.dart';
 
 import 'lang_prov.dart';
 
-final deviceServiceProv = Provider(
-  (ref) => DeviceService(
+final deviceWithStateServiceProv = Provider(
+  (ref) => DeviceWithStateService(
     languageCode: ref.watch(currentLangProv),
-    logger: ref.watch(dataLoggerProv),
-  ),
-);
-
-final deviceStateServiceProv = Provider(
-  (ref) => DeviceStateService(
     logger: ref.watch(dataLoggerProv),
   ),
 );

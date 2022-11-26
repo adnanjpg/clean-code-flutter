@@ -39,11 +39,12 @@ class _DevicesListBody extends StatelessWidget {
               itemBuilder: (context, index) {
                 final device = devices[index];
                 return SizedBox(
-                  height: 100,
                   width: 200,
-                  child: ListTile(
-                    title: Text(device.name),
-                    subtitle: Text(device.id),
+                  child: Card(
+                    child: ListTile(
+                      title: Text(device.name),
+                      subtitle: Icon(device.batteryIcon),
+                    ),
                   ),
                 );
               },
