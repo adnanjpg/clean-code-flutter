@@ -1,5 +1,6 @@
 {
     "hi": "Hello",
     "go_back_to_home": "Go back to home page",
-    "route_is_broken": "Something went wrong. Please try again later."
+    "route_is_broken": "Something went wrong. Please try again later.",
+    "home:devices_list": "Devices"
 }

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:presentation/global_widgets/error_widget.dart';
 import 'package:presentation/global_widgets/loading_widget.dart';
+import 'package:presentation/utils/utils.dart';
 
 final _devListBlocProv = Provider.autoDispose(DevicesListBlocCubit.new);
 
@@ -25,39 +26,49 @@ class _DevicesListBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
-      child: BlocBuilder<DevicesListBlocCubit, DevicesListBlocState>(
-        builder: (context, state) {
-          return state.when(
-            initial: SizedBox.new,
-            loading: LoadingWidget.new,
-            error: ErrWidget.error,
-            loaded: (devices) => ListView.builder(
-              itemCount: devices.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                final device = devices[index];
-                return SizedBox(
-                  width: 200,
-                  child: Card(
-                    color: device.bgColor,
-                    child: ListTile(
-                      title: Text(device.name),
-                      subtitle: Row(
-                        children: [
-                          Icon(device.batteryIcon),
-                          Icon(device.wifiIcon),
-                        ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          getStr('home:devices_list'),
+          style: Theme.of(context).textTheme.headline3,
+        ),
+        Container(
+          height: 100,
+          margin: defPaddingVertical,
+          child: BlocBuilder<DevicesListBlocCubit, DevicesListBlocState>(
+            builder: (context, state) {
+              return state.when(
+                initial: SizedBox.new,
+                loading: LoadingWidget.new,
+                error: ErrWidget.error,
+                loaded: (devices) => ListView.builder(
+                  itemCount: devices.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    final device = devices[index];
+                    return SizedBox(
+                      width: 200,
+                      child: Card(
+                        color: device.bgColor,
+                        child: ListTile(
+                          title: Text(device.name),
+                          subtitle: Row(
+                            children: [
+                              Icon(device.batteryIcon),
+                              Icon(device.wifiIcon),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          );
-        },
-      ),
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

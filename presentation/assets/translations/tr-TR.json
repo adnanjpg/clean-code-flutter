@@ -1,5 +1,6 @@
 {
     "hi": "Merhaba",
     "go_back_to_home": "Ana sayfaya dön",
-    "route_is_broken": "Bir sorun oluştu. Lütfen tekrar deneyin."
+    "route_is_broken": "Bir sorun oluştu. Lütfen tekrar deneyin.",
+    "home:devices_list": "Cihazlar"
 }
