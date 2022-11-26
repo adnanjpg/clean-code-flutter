@@ -44,11 +44,54 @@ class DevicesListBlocCubit extends RefCubit<DevicesListBlocState> {
 extension DevWithStateEntity on DeviceWithStateDto {
   String get batteryLevelStr => '$batteryLevel%';
 
+  Color get bgColor {
+    if (onOffState.isOff) {
+      return Colors.grey;
+    }
+
+    return color.uiColor;
+  }
+
   IconData get batteryIcon {
+    if (chargingState.isCharging) return Icons.battery_charging_full;
+
     if (batteryLevel > 80) return Icons.battery_full;
     if (batteryLevel > 60) return Icons.battery_6_bar;
     if (batteryLevel > 40) return Icons.battery_4_bar;
     if (batteryLevel > 20) return Icons.battery_2_bar;
     return Icons.battery_alert;
   }
+
+  String get wifiLevelStr => '$wifiSignal%';
+
+  IconData get wifiIcon {
+    if (wifiSignal > 80) return Icons.wifi;
+    if (wifiSignal > 40) return Icons.wifi_2_bar;
+    return Icons.wifi_1_bar;
+  }
+}
+
+extension DevColor on DeviceColor {
+  Color get uiColor {
+    switch (this) {
+      case DeviceColor.red:
+        return Colors.red;
+      case DeviceColor.green:
+        return Colors.green;
+      case DeviceColor.blue:
+        return Colors.blue;
+      case DeviceColor.yellow:
+        return Colors.yellow;
+    }
+  }
+}
+
+extension OnOff on DeviceOnOffState {
+  bool get isOn => this == DeviceOnOffState.on;
+  bool get isOff => this == DeviceOnOffState.off;
+}
+
+extension Charge on DeviceChargingState {
+  bool get isCharging => this == DeviceChargingState.charging;
+  bool get isNotCharging => this == DeviceChargingState.notCharging;
 }

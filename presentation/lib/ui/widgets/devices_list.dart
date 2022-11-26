@@ -41,9 +41,15 @@ class _DevicesListBody extends StatelessWidget {
                 return SizedBox(
                   width: 200,
                   child: Card(
+                    color: device.bgColor,
                     child: ListTile(
                       title: Text(device.name),
-                      subtitle: Icon(device.batteryIcon),
+                      subtitle: Row(
+                        children: [
+                          Icon(device.batteryIcon),
+                          Icon(device.wifiIcon),
+                        ],
+                      ),
                     ),
                   ),
                 );
