@@ -2,5 +2,8 @@
     "hi": "Hello",
     "go_back_to_home": "Go back to home page",
     "route_is_broken": "Something went wrong. Please try again later.",
-    "home:devices_list": "Devices"
+    "home:devices_list": "Devices",
+    "home:routines_list": "Routines",
+    "home:no_routines": "No routines",
+    "home:add_routine": "Add routine"
 }

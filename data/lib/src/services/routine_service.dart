@@ -1,7 +1,9 @@
-import 'package:data/src/dtos/routine_dto.dart';
+import '../dtos/routine_dto.dart';
 import 'package:data/src/services/base_service.dart';
 import 'package:hive/hive.dart';
 import 'package:logging/logging.dart';
+
+export '../dtos/routine_dto.dart';
 
 class RoutineService extends BaseLocalService {
   const RoutineService({

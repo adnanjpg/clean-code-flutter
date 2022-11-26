@@ -2,6 +2,8 @@ library data;
 
 export 'src/services/device_with_state_service.dart';
 export 'src/services/device_action_service.dart';
+export 'src/services/routine_service.dart';
+
 export 'src/data_providers/remote_data_provider.dart';
 export 'src/data_providers/local_data_provider.dart';
 

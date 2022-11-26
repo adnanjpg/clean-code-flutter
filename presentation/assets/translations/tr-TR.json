@@ -2,5 +2,8 @@
     "hi": "Merhaba",
     "go_back_to_home": "Ana sayfaya dön",
     "route_is_broken": "Bir sorun oluştu. Lütfen tekrar deneyin.",
-    "home:devices_list": "Cihazlar"
+    "home:devices_list": "Cihazlar",
+    "home:routines_list": "Rutinler",
+    "home:no_routines": "Henüz rutin yok",
+    "home:add_routine": "Rutin ekle"
 }
