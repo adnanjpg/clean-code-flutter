@@ -1,6 +1,5 @@
 import 'package:data/data.dart';
 import 'package:domain/src/prov/logger_prov.dart';
-import 'package:domain/src/prov/services_prov.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -33,19 +32,9 @@ class CreateRoutineFormCubit extends RefCubit<CreateRoutineFormState> {
       name: state.name!,
       actions: state.actions!,
     );
-    var created = await ref.read(routinesProv).addRoutine(routine);
 
-    // TODO: find a way to update the routines list
-    // this solution does not work, as RoutinesListBlocCubit
-    // is not above the widgets that call this method.
-
-    // if (!created) {
-    //   return false;
-    // }
-
-    // created = context.read<RoutinesListBlocCubit>().addRoutine(routine);
-
-    // return created;
+    final created =
+        await context.read<RoutinesListBlocCubit>().addRoutine(routine);
 
     return created;
   }

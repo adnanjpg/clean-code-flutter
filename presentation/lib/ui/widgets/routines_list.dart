@@ -2,29 +2,14 @@ import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:presentation/global_widgets/error_widget.dart';
 
 import '../../global_widgets/loading_widget.dart';
 import '../../utils/utils.dart';
 import 'create_routine_form.dart';
 
-final _routinesListBlocProv = Provider.autoDispose(RoutinesListBlocCubit.new);
-
 class RoutinesList extends ConsumerWidget {
   const RoutinesList({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return BlocProvider(
-      create: (_) => ref.watch(_routinesListBlocProv),
-      child: const _RoutinesListBody(),
-    );
-  }
-}
-
-class _RoutinesListBody extends ConsumerWidget {
-  const _RoutinesListBody();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -84,6 +69,25 @@ class _RoutinesListBody extends ConsumerWidget {
                             e.actionsStr,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
+                          ),
+                          trailing: SizedBox(
+                            width: 100,
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.edit),
+                                  onPressed: () {},
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  onPressed: () {
+                                    context
+                                        .read<RoutinesListBlocCubit>()
+                                        .deleteRoutine(e);
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

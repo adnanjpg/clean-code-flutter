@@ -32,7 +32,7 @@ class RoutinesListBlocCubit extends RefCubit<RoutinesListBlocState> {
     }
   }
 
-  bool addRoutine(RoutineDto routine) {
+  Future<bool> addRoutine(RoutineDto routine) async {
     if (state is! _Loaded) {
       ref
           .read(domainLoggerProv)
@@ -40,8 +40,34 @@ class RoutinesListBlocCubit extends RefCubit<RoutinesListBlocState> {
       return false;
     }
 
+    final success = await ref.read(routinesProv).addRoutine(routine);
+
+    if (!success) {
+      return false;
+    }
+
     final routines = (state as _Loaded).routines;
     final newRoutines = [...routines, routine];
+    emit(RoutinesListBlocState.loaded(newRoutines));
+    return true;
+  }
+
+  Future<bool> deleteRoutine(RoutineDto routine) async {
+    if (state is! _Loaded) {
+      ref
+          .read(domainLoggerProv)
+          .shout('Tried to toggle device enabled when not loaded');
+      return false;
+    }
+
+    final success = await ref.read(routinesProv).deleteRoutine(routine);
+
+    if (!success) {
+      return false;
+    }
+
+    final routines = (state as _Loaded).routines;
+    final newRoutines = routines.where((r) => r.id != routine.id).toList();
     emit(RoutinesListBlocState.loaded(newRoutines));
     return true;
   }
