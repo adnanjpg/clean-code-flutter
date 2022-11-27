@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 import 'package:collection/collection.dart';
 
 void main() {
-  Logger.root.level = Level.ALL; // defaults to Level.INFO
+  Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
     debugPrint('${record.level.name}: ${record.time}: ${record.message}');
   });
@@ -52,6 +52,7 @@ void main() {
       );
     },
   );
+
   group(
     'Device actions service',
     () {
@@ -84,7 +85,8 @@ void main() {
         'Get routines list',
         () async {
           final routines = await routineService.getRoutines();
-
+          // initially there should be no routines, as this
+          // store is being set up for the first time
           expect(routines, []);
 
           final routine = RoutineDto(
@@ -100,10 +102,17 @@ void main() {
           );
 
           await routineService.addRoutine(routine);
-
           final routines2 = await routineService.getRoutines();
-
           expect(const ListEquality().equals(routines2, [routine]), isTrue);
+
+          final newRoutine = routine.copyWith(name: 'test2');
+          await routineService.updateRoutine(newRoutine);
+          final routines3 = await routineService.getRoutines();
+          expect(const ListEquality().equals(routines3, [newRoutine]), isTrue);
+
+          await routineService.deleteRoutine(newRoutine);
+          final routines4 = await routineService.getRoutines();
+          expect(routines4, []);
         },
       );
     },
