@@ -76,7 +76,13 @@ class RoutinesList extends ConsumerWidget {
                               children: [
                                 IconButton(
                                   icon: const Icon(Icons.edit),
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    await CreateRoutineForm.showModal(
+                                      context,
+                                      routine:
+                                          CreateRoutineFormState.fromRoutine(e),
+                                    );
+                                  },
                                 ),
                                 IconButton(
                                   icon: const Icon(Icons.delete),

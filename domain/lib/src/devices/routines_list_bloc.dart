@@ -36,7 +36,7 @@ class RoutinesListBlocCubit extends RefCubit<RoutinesListBlocState> {
     if (state is! _Loaded) {
       ref
           .read(domainLoggerProv)
-          .shout('Tried to toggle device enabled when not loaded');
+          .shout('Tried to add a routine when not loaded');
       return false;
     }
 
@@ -48,6 +48,30 @@ class RoutinesListBlocCubit extends RefCubit<RoutinesListBlocState> {
 
     final routines = (state as _Loaded).routines;
     final newRoutines = [...routines, routine];
+    emit(RoutinesListBlocState.loaded(newRoutines));
+    return true;
+  }
+
+  Future<bool> updateRoutine(RoutineDto routine) async {
+    if (state is! _Loaded) {
+      ref
+          .read(domainLoggerProv)
+          .shout('Tried to update a routine when not loaded');
+      return false;
+    }
+
+    final success = await ref.read(routinesProv).updateRoutine(routine);
+
+    if (!success) {
+      return false;
+    }
+
+    final routines = (state as _Loaded).routines;
+    final newRoutines = routines
+        .map(
+          (r) => r.id == routine.id ? routine : r,
+        )
+        .toList();
     emit(RoutinesListBlocState.loaded(newRoutines));
     return true;
   }

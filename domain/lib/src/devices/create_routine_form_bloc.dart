@@ -13,13 +13,33 @@ part 'create_routine_form_bloc.freezed.dart';
 @freezed
 class CreateRoutineFormState with _$CreateRoutineFormState {
   factory CreateRoutineFormState({
+    String? id,
     String? name,
     List<DeviceActionDto>? actions,
   }) = _CreateRoutineFormState;
+
+  factory CreateRoutineFormState.fromRoutine(RoutineDto routine) =>
+      CreateRoutineFormState(
+        id: routine.id,
+        name: routine.name,
+        actions: routine.actions,
+      );
 }
 
 class CreateRoutineFormCubit extends RefCubit<CreateRoutineFormState> {
   CreateRoutineFormCubit(Ref ref) : super(ref, CreateRoutineFormState());
+
+  void apply(CreateRoutineFormState state) {
+    emit(state);
+  }
+
+  Future<bool> createOrUpdateRoutine(BuildContext context) async {
+    if (state.id == null) {
+      return createRoutine(context);
+    } else {
+      return updateRoutine(context);
+    }
+  }
 
   Future<bool> createRoutine(BuildContext context) async {
     if (state.name == null || state.actions == null) {
@@ -37,6 +57,24 @@ class CreateRoutineFormCubit extends RefCubit<CreateRoutineFormState> {
         await context.read<RoutinesListBlocCubit>().addRoutine(routine);
 
     return created;
+  }
+
+  Future<bool> updateRoutine(BuildContext context) async {
+    if (state.id == null || state.name == null || state.actions == null) {
+      ref.read(domainLoggerProv).severe('Invalid state');
+      return false;
+    }
+
+    final routine = RoutineDto(
+      id: state.id!,
+      name: state.name!,
+      actions: state.actions!,
+    );
+
+    final updated =
+        await context.read<RoutinesListBlocCubit>().updateRoutine(routine);
+
+    return updated;
   }
 
   void setName(String name) {

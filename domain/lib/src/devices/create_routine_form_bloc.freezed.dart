@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CreateRoutineFormState {
+  String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   List<DeviceActionDto>? get actions => throw _privateConstructorUsedError;
 
@@ -30,7 +31,7 @@ abstract class $CreateRoutineFormStateCopyWith<$Res> {
           $Res Function(CreateRoutineFormState) then) =
       _$CreateRoutineFormStateCopyWithImpl<$Res, CreateRoutineFormState>;
   @useResult
-  $Res call({String? name, List<DeviceActionDto>? actions});
+  $Res call({String? id, String? name, List<DeviceActionDto>? actions});
 }
 
 /// @nodoc
@@ -47,10 +48,15 @@ class _$CreateRoutineFormStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? actions = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -71,7 +77,7 @@ abstract class _$$_CreateRoutineFormStateCopyWith<$Res>
       __$$_CreateRoutineFormStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? name, List<DeviceActionDto>? actions});
+  $Res call({String? id, String? name, List<DeviceActionDto>? actions});
 }
 
 /// @nodoc
@@ -86,10 +92,15 @@ class __$$_CreateRoutineFormStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? actions = freezed,
   }) {
     return _then(_$_CreateRoutineFormState(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -105,9 +116,12 @@ class __$$_CreateRoutineFormStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CreateRoutineFormState implements _CreateRoutineFormState {
-  _$_CreateRoutineFormState({this.name, final List<DeviceActionDto>? actions})
+  _$_CreateRoutineFormState(
+      {this.id, this.name, final List<DeviceActionDto>? actions})
       : _actions = actions;
 
+  @override
+  final String? id;
   @override
   final String? name;
   final List<DeviceActionDto>? _actions;
@@ -121,7 +135,7 @@ class _$_CreateRoutineFormState implements _CreateRoutineFormState {
 
   @override
   String toString() {
-    return 'CreateRoutineFormState(name: $name, actions: $actions)';
+    return 'CreateRoutineFormState(id: $id, name: $name, actions: $actions)';
   }
 
   @override
@@ -129,13 +143,14 @@ class _$_CreateRoutineFormState implements _CreateRoutineFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CreateRoutineFormState &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._actions, _actions));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_actions));
+      runtimeType, id, name, const DeepCollectionEquality().hash(_actions));
 
   @JsonKey(ignore: true)
   @override
@@ -147,9 +162,12 @@ class _$_CreateRoutineFormState implements _CreateRoutineFormState {
 
 abstract class _CreateRoutineFormState implements CreateRoutineFormState {
   factory _CreateRoutineFormState(
-      {final String? name,
+      {final String? id,
+      final String? name,
       final List<DeviceActionDto>? actions}) = _$_CreateRoutineFormState;
 
+  @override
+  String? get id;
   @override
   String? get name;
   @override

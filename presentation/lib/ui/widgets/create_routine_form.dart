@@ -14,12 +14,37 @@ final _routineActionsListBlocProv =
     Provider.autoDispose(DeviceActionsListBlocCubit.new);
 
 class CreateRoutineForm extends ConsumerWidget {
-  static Future<void> showModal(BuildContext context) async {
+  static Future<void> showModal(
+    BuildContext context, {
+    CreateRoutineFormState? routine,
+  }) async {
     showCupertinoModalBottomSheet(
       context: context,
       builder: (context) {
-        return const Scaffold(
-          body: CreateRoutineForm(),
+        return Consumer(
+          builder: (context, ref, _) {
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (_) {
+                    final bloc = ref.watch(_createRoutineFormBlocProv);
+
+                    if (routine != null) {
+                      bloc.apply(routine);
+                    }
+
+                    return bloc;
+                  },
+                ),
+                BlocProvider(
+                  create: (_) => ref.watch(_routineActionsListBlocProv),
+                ),
+              ],
+              child: const Scaffold(
+                body: CreateRoutineForm(),
+              ),
+            );
+          },
         );
       },
     );
@@ -29,19 +54,9 @@ class CreateRoutineForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => ref.watch(_createRoutineFormBlocProv),
-        ),
-        BlocProvider(
-          create: (_) => ref.watch(_routineActionsListBlocProv),
-        ),
-      ],
-      child: const Scaffold(
-        body: _CreateRoutineFormBody(),
-        bottomNavigationBar: _CreateRoutineFormSubmitButton(),
-      ),
+    return const Scaffold(
+      body: _CreateRoutineFormBody(),
+      bottomNavigationBar: _CreateRoutineFormSubmitButton(),
     );
   }
 }
@@ -80,6 +95,7 @@ class _CreateRoutineFormBodyState extends State<_CreateRoutineFormBody> {
                       }
                       return null;
                     },
+                    initialValue: state.name,
                     onChanged: (value) {
                       context.read<CreateRoutineFormCubit>().setName(value);
                     },
@@ -145,7 +161,10 @@ class _CreateRoutineFormSubmitButton extends ConsumerWidget {
     return ElevatedButton(
       onPressed: () async {
         final nav = Navigator.of(context);
-        await context.read<CreateRoutineFormCubit>().createRoutine(context);
+
+        await context
+            .read<CreateRoutineFormCubit>()
+            .createOrUpdateRoutine(context);
         nav.pop();
       },
       child: Text(
