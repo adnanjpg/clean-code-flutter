@@ -1,3 +1,5 @@
+This project is an example project I have worked on for applying the clean code pattern and a concrete seperation of concern.
+
 ### Technical decisions:
 I have used clean code architecture in this project and decided to make each layer as a completely seperate package for maximum seperation of conecern. As you can see in the code, the 
 `data` layer has 0 idea that there is another layer other than itself, `domain` layer only knows about `data` layer, and `presentation` only knows about `domain` layer.
